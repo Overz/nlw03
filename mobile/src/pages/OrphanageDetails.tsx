@@ -1,16 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, View, ScrollView, Text } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-import { Feather, FontAwesome } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 import { styleOrphanageDetails as styles } from '../styles/orphanageDetails';
 import mapMarkerImg from '../img/map-marker.png';
 import { RectButton } from 'react-native-gesture-handler';
+import { useRoute } from '@react-navigation/native';
+import { IOrphanage, IParams } from '../util/interfaces';
+import { api } from '../services/api';
+import { or } from 'react-native-reanimated';
 
 export default function OrphanageDetails() {
+  const { id } = useRoute().params as IParams;
+  const [orphanage, setOrphanage] = useState<IOrphanage>();
+
+  useEffect(() => {
+    api.get(`orphanages/${id}`).then((res) => setOrphanage(res.data));
+  }, [id]);
+
+  // https://blog.rocketseat.com.br/react-native-shimmer/
+  if (!orphanage) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.description}>Carregando...</Text>
+      </View>
+    );
+  }
   return (
     <ScrollView style={styles.container}>
       <View style={styles.imagesContainer}>
-        <ScrollView horizontal pagingEnabled>
+        {/*
+          ScrollView, naturalmente é vertical, utilizado quando existem mais conteudos
+          para serem exibidos, utilizando a propriedade "Horizontal", ele se habilita para mover-se
+          horizontalmente, e "PagingEnable" que inpede que a paginação das imagens, trávem/parem
+          pela metade, obrigando a ser mostrado o conteúdo completo, e não metade de uma imagem, e metade de outra imagem
+        */}
+        <ScrollView horizontal={true} pagingEnabled={true}>
           <Image
             style={styles.image}
             source={{
@@ -33,17 +58,14 @@ export default function OrphanageDetails() {
       </View>
 
       <View style={styles.detailsContainer}>
-        <Text style={styles.title}>Orf. Esperança</Text>
-        <Text style={styles.description}>
-          Presta assistência a crianças de 06 a 15 anos que se encontre em
-          situação de risco e/ou vulnerabilidade social.
-        </Text>
+        <Text style={styles.title}>{orphanage.name}</Text>
+        <Text style={styles.description}>{orphanage.about}</Text>
 
         <View style={styles.mapContainer}>
           <MapView
             initialRegion={{
-              latitude: -27.5859169,
-              longitude: -48.598233,
+              latitude: orphanage.latitude,
+              longitude: orphanage.longitude,
               latitudeDelta: 0.03,
               longitudeDelta: 0.03,
             }}
@@ -56,8 +78,8 @@ export default function OrphanageDetails() {
             <Marker
               icon={mapMarkerImg}
               coordinate={{
-                latitude: -27.5859169,
-                longitude: -48.598233,
+                latitude: orphanage.latitude,
+                longitude: orphanage.longitude,
               }}
             />
           </MapView>
@@ -70,16 +92,13 @@ export default function OrphanageDetails() {
         <View style={styles.separator} />
 
         <Text style={styles.title}>Instruções para visita</Text>
-        <Text style={styles.description}>
-          Venha como se sentir a vontade e traga muito amor e paciência para
-          dar.
-        </Text>
+        <Text style={styles.description}>{orphanage.instructions}</Text>
 
         <View style={styles.scheduleContainer}>
           <View style={[styles.scheduleItem, styles.scheduleItemBlue]}>
             <Feather name="clock" size={40} color="#2AB5D1" />
             <Text style={[styles.scheduleText, styles.scheduleTextBlue]}>
-              Segunda à Sexta 8h às 18h
+              Segunda à Sexta {orphanage.opening_hours}
             </Text>
           </View>
           <View style={[styles.scheduleItem, styles.scheduleItemGreen]}>
@@ -90,10 +109,10 @@ export default function OrphanageDetails() {
           </View>
         </View>
 
-        <RectButton style={styles.contactButton} onPress={() => {}}>
+        {/* <RectButton style={styles.contactButton} onPress={() => {}}>
           <FontAwesome name="whatsapp" size={24} color="#FFF" />
           <Text style={styles.contactButtonText}>Entrar em contato</Text>
-        </RectButton>
+        </RectButton> */}
       </View>
     </ScrollView>
   );

@@ -8,6 +8,7 @@ export const exibirOrphanage = (o?: Orphanage) => {
     about: o?.about,
     latitude: o?.latitude,
     longitude: o?.longitude,
+    instructions: o?.instructions,
     opening_hours: o?.opening_hours,
     open_on_weekends: o?.open_on_weekends,
     images: listarImage(o?.images),
