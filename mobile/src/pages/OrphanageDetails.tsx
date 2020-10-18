@@ -5,7 +5,6 @@ import { Feather, FontAwesome } from '@expo/vector-icons';
 import { styleOrphanageDetails as styles } from '../styles/orphanageDetails';
 import mapMarkerImg from '../img/map-marker.png';
 import { RectButton } from 'react-native-gesture-handler';
-import { ld, lg } from '../Routes';
 
 export default function OrphanageDetails() {
   return (
@@ -43,8 +42,8 @@ export default function OrphanageDetails() {
         <View style={styles.mapContainer}>
           <MapView
             initialRegion={{
-              latitude: ld,
-              longitude: lg,
+              latitude: -27.5859169,
+              longitude: -48.598233,
               latitudeDelta: 0.03,
               longitudeDelta: 0.03,
             }}
@@ -57,8 +56,8 @@ export default function OrphanageDetails() {
             <Marker
               icon={mapMarkerImg}
               coordinate={{
-                latitude: ld,
-                longitude: lg,
+                latitude: -27.5859169,
+                longitude: -48.598233,
               }}
             />
           </MapView>

@@ -4,7 +4,6 @@ import { useNavigation } from '@react-navigation/native';
 import { RectButton } from 'react-native-gesture-handler';
 import MapView, { Marker } from 'react-native-maps';
 import mapMarkerImg from '../../img/map-marker.png';
-import { ld, lg } from '../../Routes';
 import { styleOrphanageMapPosition as styles } from '../../styles/orphanageMapPosition';
 
 export default function SelectMapPosition() {
@@ -18,8 +17,8 @@ export default function SelectMapPosition() {
     <View style={styles.container}>
       <MapView
         initialRegion={{
-          latitude: ld,
-          longitude: lg,
+          latitude: -27.5859169,
+          longitude: -48.598233,
           latitudeDelta: 0.03,
           longitudeDelta: 0.03,
         }}
@@ -28,8 +27,8 @@ export default function SelectMapPosition() {
         <Marker
           icon={mapMarkerImg}
           coordinate={{
-            latitude: ld,
-            longitude: lg,
+            latitude: -27.5859169,
+            longitude: -48.598233,
           }}
         />
       </MapView>

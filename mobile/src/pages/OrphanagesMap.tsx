@@ -5,7 +5,6 @@ import mapMarker from '../img/map-marker.png';
 import { Feather } from '@expo/vector-icons';
 import { styleOrphanageMap as styles } from '../styles/orphanageMap';
 import { useNavigation } from '@react-navigation/native';
-import { ld, lg } from '../Routes';
 
 export default function OrphanagesMap() {
   const navigation = useNavigation();
@@ -20,8 +19,8 @@ export default function OrphanagesMap() {
         provider={PROVIDER_GOOGLE}
         style={styles.map}
         initialRegion={{
-          latitude: ld,
-          longitude: lg,
+          latitude: -27.5859169,
+          longitude: -48.598233,
           latitudeDelta: 0.008,
           longitudeDelta: 0.008,
         }}
@@ -33,8 +32,8 @@ export default function OrphanagesMap() {
             y: -0.1,
           }}
           coordinate={{
-            latitude: ld,
-            longitude: lg,
+            latitude: -27.5859169,
+            longitude: -48.598233,
           }}
         >
           <Callout tooltip onPress={handleNavigateToOphanageDetails}>

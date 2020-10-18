@@ -9,9 +9,6 @@ import SelectMapPosition from './pages/CreateOrphanage/SelectMapPosition';
 
 const { Navigator, Screen } = createStackNavigator();
 
-export const ld = -27.5859169;
-export const lg = -48.598233;
-
 export default function Routes() {
   return (
     <NavigationContainer>
