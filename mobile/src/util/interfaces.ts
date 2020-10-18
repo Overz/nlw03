@@ -16,3 +16,10 @@ export interface IOrphanage {
 export interface IParams {
   id: number;
 }
+
+export interface IPosition {
+  position: {
+    latitude: number;
+    longitude: number;
+  };
+}

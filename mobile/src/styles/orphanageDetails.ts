@@ -89,6 +89,12 @@ export const styleOrphanageDetails = StyleSheet.create({
     borderColor: '#A1E9C5',
     borderRadius: 20,
   },
+  scheduleItemRed: {
+    backgroundColor: '#FEF6F9',
+    borderWidth: 1,
+    borderColor: '#FFBCD4',
+    borderRadius: 20,
+  },
 
   scheduleText: {
     fontFamily: 'Nunito_600SemiBold',
@@ -103,6 +109,10 @@ export const styleOrphanageDetails = StyleSheet.create({
 
   scheduleTextGreen: {
     color: '#37C77F',
+  },
+
+  scheduleTextRed: {
+    color: '#FF669D',
   },
 
   contactButton: {
