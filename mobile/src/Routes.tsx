@@ -1,10 +1,16 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+
 import OrphanagesMap from './pages/OrphanagesMap';
-import OrphanageDetails from './pages/OrphanagesDetails';
+import OrphanageDetails from './pages/OrphanageDetails';
+import OrphanageData from './pages/CreateOrphanage/OrphanageData';
+import SelectMapPosition from './pages/CreateOrphanage/SelectMapPosition';
 
 const { Navigator, Screen } = createStackNavigator();
+
+export const ld = -27.5859169;
+export const lg = -48.598233;
 
 export default function Routes() {
   return (
@@ -19,6 +25,16 @@ export default function Routes() {
           options={{ headerTitle: 'Detalhe do Orfanato' }}
           name="OrphanageDetails"
           component={OrphanageDetails}
+        />
+        <Screen
+          options={{ headerTitle: 'SelectMap??' }}
+          name="SelectMapPosition"
+          component={SelectMapPosition}
+        />
+        <Screen
+          options={{ headerTitle: 'Data??' }}
+          name="OrphanageData"
+          component={OrphanageData}
         />
       </Navigator>
     </NavigationContainer>

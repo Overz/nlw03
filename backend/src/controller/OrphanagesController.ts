@@ -2,9 +2,6 @@ import { Request, Response } from 'express';
 import { orphanagesRepository } from '../db/connection';
 import { exibirOrphanage, listarOphanage } from '../view/OrphanagesView';
 import * as yup from 'yup';
-import fs from 'fs';
-import path from 'path';
-import { Orphanage } from '../models/Orphanage';
 
 const schema = yup.object().shape({
   name: yup.string().required('É necessário informar o campo Nome'),

@@ -3,11 +3,9 @@ import { Text, TouchableOpacity, View } from 'react-native';
 import MapView, { Marker, Callout, PROVIDER_GOOGLE } from 'react-native-maps';
 import mapMarker from '../img/map-marker.png';
 import { Feather } from '@expo/vector-icons';
-import { styles } from '../styles/mapStyle';
+import { styleOrphanageMap as styles } from '../styles/orphanageMap';
 import { useNavigation } from '@react-navigation/native';
-
-const ld = -27.5859169;
-const lg = -48.598233;
+import { ld, lg } from '../Routes';
 
 export default function OrphanagesMap() {
   const navigation = useNavigation();
