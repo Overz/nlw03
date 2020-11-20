@@ -104,6 +104,9 @@ export default {
 
     res.json({ ok: true });
   },
+  async ping(req: Request, res: Response) {
+    res.json({ ok: true });
+  },
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

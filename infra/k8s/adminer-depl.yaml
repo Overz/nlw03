@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adminer-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adminer
+  template:
+    metadata:
+      labels:
+        app: adminer
+    spec:
+      containers:
+        - name: adminer
+          image: adminer
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ADMINER_DEFAULT_SERVER
+              value: postgres-srv
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nlw-adminer-srv
+spec:
+  selector:
+    app: adminer
+  type: ClusterIP
+  ports:
+    - name: adminer
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: nlw-adminer-ingress-srv
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+    - host: adminer.local
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: nlw-adminer-srv
+              servicePort: 8080
+

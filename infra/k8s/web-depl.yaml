@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: web
+          image: nlw/web
+          imagePullPolicy: Never
+          resources:
+            limits:
+              cpu: "250m"
+              memory: "1G"
+          env:
+            - name: REACT_APP_MAPBOX_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: nlw-secret
+                  key: REACT_APP_MAPBOX_TOKEN
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-srv
+spec:
+  selector:
+    app: web
+  type: ClusterIP
+  ports:
+    - name: web
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
