@@ -1,9 +1,0 @@
-<!-- {
-	"name": "asdas",
-	"latitude": -1231295738,
-	"longitude": -2942034892,
-	"about": "asdas",
-	"instructions": "asdasd",
-	"opening_hours": "asdasd",
-	"open_on_weekends": "asdasd"
-} -->
