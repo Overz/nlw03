@@ -1,7 +1,0 @@
-node_modules
-Dockerfile*
-.prettierrc
-.gitignore
-.eslint.js
-requests.md
-tmp/upload/*
