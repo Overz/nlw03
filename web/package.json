@@ -2,6 +2,27 @@
   "name": "web",
   "version": "0.1.0",
   "private": true,
+<<<<<<< HEAD:web/package.json
+=======
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "axios": "^0.21.1",
+    "leaflet": "^1.7.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-icons": "^3.11.0",
+    "react-leaflet": "^2.7.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.0",
+    "typescript": "~3.7.2"
+  },
+>>>>>>> 9c88b72d0772979c95e4155e6030187c9a1c9a46:nlw03/web/package.json
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
